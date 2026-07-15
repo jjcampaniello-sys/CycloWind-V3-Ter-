@@ -45,10 +45,10 @@ data.features.forEach((place) => {
 
     lat: place.geometry.coordinates[1],
     lon: place.geometry.coordinates[0],
-    name: item.innerText
+    name: full
 
 });
-                    //document.getElementById("destination").value = full;
+                    document.getElementById("destination").value = full;
 
                     container.innerHTML = "";
 
