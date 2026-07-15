@@ -39,8 +39,8 @@ window.destinationCandidates ={
     lat: place.geometry.coordinates[1],
     lon: place.geometry.coordinates[0]
 };  
-                    document.getElementById("destination").value = full;
-
+                    //document.getElementById("destination").value = full;
+document.getElementById("destinationCandidates").value = full;
                     container.innerHTML = "";
 
                   //  console.log("Destination choisie :", window.destination);
