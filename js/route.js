@@ -150,10 +150,10 @@ function drawGrayRoute(latlngs){
 // Calcul trajet
 async function getRoute(){
    alert("getRoute démarré");
-    //if(!window.userPosition){
-  //  alert("Définissez votre position d'abord");
-   // return;
-//}
+    if(!window.userPosition){
+   alert("Définissez votre position d'abord");
+    return;
+}
 
 if(window.destinationCandidates){
 
