@@ -242,8 +242,8 @@ await getAlternativeRoute(
 
 alert("Route alternative OK");
     
-    const alternative = await getAlternativeRoute(start, endLat, endLon);
-    alert("Route alternative OK");
+   // const alternative = await getAlternativeRoute(start, endLat, endLon);
+//    alert("Route alternative OK");
    // console.log("Route alternative :", alternative);
 
     const apiKey = "eyJvcmciOiI1YjNjZTM1OTc4NTExMTAwMDFjZjYyNDgiLCJpZCI6ImU5N2JkNDJjYTM5MzRjYTFhODQ1MTE2YjViNmQ2ZGJjIiwiaCI6Im11cm11cjY0In0=";
