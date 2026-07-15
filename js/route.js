@@ -299,7 +299,7 @@ alert("Route alternative OK");
 const firstDir = getSegmentDirection(latlngs[0], latlngs[1]);
 
 await getWind(start.lat, start.lng, firstDir);
-
+alert("Vent récupéré");
 // puis
 //drawWindRoute(latlngs);
     
@@ -341,4 +341,4 @@ document.getElementById("windInfo").innerHTML = `
     };
 
     window.drawWindRoute = drawWindRoute;
-}
+};
