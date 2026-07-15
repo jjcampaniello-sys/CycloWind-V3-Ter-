@@ -35,7 +35,10 @@ function searchDestination(){
    // lat: place.geometry.coordinates[1],
    // lon: place.geometry.coordinates[0]
 //};
-window.destinationCandidates = results.slice(0,3);
+window.destinationCandidates ={
+    lat: place.geometry.coordinates[1],
+    lon: place.geometry.coordinates[0]
+};  
                     document.getElementById("destination").value = full;
 
                     container.innerHTML = "";
