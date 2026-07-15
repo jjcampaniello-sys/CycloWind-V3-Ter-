@@ -150,9 +150,31 @@ function drawGrayRoute(latlngs){
 // Calcul trajet
 async function getRoute(){
    alert("getRoute démarré");
-    if(!window.userPosition){
-    alert("Définissez votre position d'abord");
-    return;
+    //if(!window.userPosition){
+  //  alert("Définissez votre position d'abord");
+   // return;
+//}
+
+if(window.destinationCandidates){
+
+    let best = null;
+    let bestScore = Infinity;
+
+    for(let dest of window.destinationCandidates){
+
+        const route = await getAlternativeRoute(start, dest.lat, dest.lon);
+
+        const latlngs = route.geometry.coordinates.map(p => [p[1], p[0]]);
+
+        const score = calculateWindScore(latlngs);
+
+        if(score < bestScore){
+            bestScore = score;
+            best = dest;
+        }
+    }
+
+    window.destination = best;
 }
     
     if(!window.destination){
