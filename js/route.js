@@ -194,6 +194,7 @@ if(window.destinationCandidates){
     lat: window.userPosition[0],
     lng: window.userPosition[1]
 };
+    alert("Départ OK");
     console.log(
 "Destinations possibles :",
 window.destinationCandidates
@@ -211,7 +212,7 @@ window.destinationCandidates
     const endLon = window.destination.lon;
     
     const alternative = await getAlternativeRoute(start, endLat, endLon);
-    
+    alert("Route alternative OK");
    // console.log("Route alternative :", alternative);
 
     const apiKey = "eyJvcmciOiI1YjNjZTM1OTc4NTExMTAwMDFjZjYyNDgiLCJpZCI6ImU5N2JkNDJjYTM5MzRjYTFhODQ1MTE2YjViNmQ2ZGJjIiwiaCI6Im11cm11cjY0In0=";
@@ -234,6 +235,7 @@ window.destinationCandidates
     });
 
     const data = await response.json();
+    alert("Réponse ORS OK");
     //console.log("Routes ORS reçues :", data);
     const coords = data.features[0].geometry.coordinates;
 
@@ -244,6 +246,7 @@ window.destinationCandidates
     }];
     
     const latlngs = coords.map(point => [point[1], point[0]]);   
+    alert("Coordonnées route OK : " + latlngs.length);
 
     window.currentRoute = latlngs.map(p => ({
         lat: p[0],
