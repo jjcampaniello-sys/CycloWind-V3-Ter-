@@ -341,4 +341,4 @@ document.getElementById("windInfo").innerHTML = `
     };
 
     window.drawWindRoute = drawWindRoute;
-};
+}
