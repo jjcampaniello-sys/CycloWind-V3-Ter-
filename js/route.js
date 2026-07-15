@@ -181,11 +181,23 @@ if(window.destinationCandidates){
         alert("Choisissez une destination dans la liste");
         return;
     }
+    if(window.destinationCandidates.length > 1){
+
+    alert(
+    "Plusieurs destinations trouvées : "
+    + window.destinationCandidates.length
+    );
+
+}
     
    const start = {   
     lat: window.userPosition[0],
     lng: window.userPosition[1]
 };
+    console.log(
+"Destinations possibles :",
+window.destinationCandidates
+);
 // 🔥 AJOUT ICI
 //const firstDir = getSegmentDirection(latlngs[0], latlngs[1]);
 //await getWind(start.lat, start.lng, firstDir);
