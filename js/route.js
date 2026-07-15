@@ -149,71 +149,98 @@ function drawGrayRoute(latlngs){
 
 // Calcul trajet
 async function getRoute(){
-   alert(
+
+alert(
 "GetRoute démarré\n" +
 "userPosition = " + JSON.stringify(window.userPosition) +
 "\ndestination = " + JSON.stringify(window.destination)
 );
-    if(!window.userPosition){
-   alert("Définissez votre position d'abord");
+
+
+if(!window.userPosition){
+
+    alert("Définissez votre position d'abord");
     return;
+
 }
 
-if(window.destinationCandidates){
+
+const start = {
+
+    lat: window.userPosition[0],
+    lng: window.userPosition[1]
+
+};
+
+
+alert("Départ OK");
+
+
+// choix automatique seulement si plusieurs lieux existent
+if(window.destinationCandidates.length > 1){
 
     let best = null;
     let bestScore = Infinity;
 
+
     for(let dest of window.destinationCandidates){
 
-        const route = await getAlternativeRoute(start, dest.lat, dest.lon);
 
-        const latlngs = route.geometry.coordinates.map(p => [p[1], p[0]]);
+        const route =
+        await getAlternativeRoute(
+            start,
+            dest.lat,
+            dest.lon
+        );
 
-        const score = calculateWindScore(latlngs);
+
+        const latlngs =
+        route.geometry.coordinates.map(
+            p => [p[1],p[0]]
+        );
+
+
+        const score =
+        calculateWindScore(latlngs);
+
 
         if(score < bestScore){
+
             bestScore = score;
             best = dest;
+
         }
+
     }
+
 
     window.destination = best;
-}
-    
-    if(!window.destination){
-        alert("Choisissez une destination dans la liste");
-        return;
-    }
-    if(window.destinationCandidates.length > 1){
-
-    alert(
-    "Plusieurs destinations trouvées : "
-    + window.destinationCandidates.length
-    );
 
 }
-    
-   const start = {   
-    lat: window.userPosition[0],
-    lng: window.userPosition[1]
-};
-    alert("Départ OK");
-    console.log(
-"Destinations possibles :",
-window.destinationCandidates
-);
-// 🔥 AJOUT ICI
-//const firstDir = getSegmentDirection(latlngs[0], latlngs[1]);
-//await getWind(start.lat, start.lng, firstDir);
 
-    //await getWind(start.lat, start.lng, 0);
-    
-    alert(
-"Départ : " + start.lat + " / " + start.lng
+
+
+if(!window.destination){
+
+    alert("Choisissez une destination dans la liste");
+    return;
+
+}
+
+
+const endLat = window.destination.lat;
+const endLon = window.destination.lon;
+
+
+const alternative =
+await getAlternativeRoute(
+    start,
+    endLat,
+    endLon
 );
-    const endLat = window.destination.lat;
-    const endLon = window.destination.lon;
+
+
+alert("Route alternative OK");
     
     const alternative = await getAlternativeRoute(start, endLat, endLon);
     alert("Route alternative OK");
