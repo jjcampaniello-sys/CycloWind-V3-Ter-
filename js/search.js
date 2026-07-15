@@ -1,7 +1,7 @@
 alert("search.js chargé");
 
 window.destination = null;
-
+window.destinationCandidates = [];
 function searchDestination(){
 
     const query = document.getElementById("destination").value;
@@ -15,7 +15,9 @@ function searchDestination(){
             const container = document.getElementById("suggestions");
             container.innerHTML = "";
 
-            data.features.forEach(place => {
+            window.destinationCandidates = [];
+
+data.features.forEach((place) => {
 
                 const name = place.properties.name || "Lieu";
                 const city = place.properties.city || "";
@@ -31,16 +33,23 @@ function searchDestination(){
                 div.onclick = function(){
 
                     // 🔥 STOCKER DESTINATION
-                  // window.destination = {
-   // lat: place.geometry.coordinates[1],
-   // lon: place.geometry.coordinates[0]
-//};
-window.destinationCandidates ={
+                   window.destination = {
     lat: place.geometry.coordinates[1],
     lon: place.geometry.coordinates[0]
-};  
+};
+  console.log(
+    "Destination choisie :",
+    window.destination
+);
+                    window.destinationCandidates.push({
+
+    lat: place.geometry.coordinates[1],
+    lon: place.geometry.coordinates[0],
+    name: item.innerText
+
+});
                     //document.getElementById("destination").value = full;
-document.getElementById("destinationCandidates").value = full;
+
                     container.innerHTML = "";
 
                   //  console.log("Destination choisie :", window.destination);
