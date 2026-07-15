@@ -31,16 +31,16 @@ function searchDestination(){
                 div.onclick = function(){
 
                     // 🔥 STOCKER DESTINATION
-                   window.destination = {
-    lat: place.geometry.coordinates[1],
-    lon: place.geometry.coordinates[0]
-};
-
+                  // window.destination = {
+   // lat: place.geometry.coordinates[1],
+   // lon: place.geometry.coordinates[0]
+//};
+window.destinationCandidates = results.slice(0,3);
                     document.getElementById("destination").value = full;
 
                     container.innerHTML = "";
 
-                    console.log("Destination choisie :", window.destination);
+                  //  console.log("Destination choisie :", window.destination);
                 };
 
                 container.appendChild(div);
