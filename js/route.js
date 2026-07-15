@@ -177,7 +177,11 @@ alert("Départ OK");
 
 
 // choix automatique seulement si plusieurs lieux existent
-if(window.destinationCandidates.length > 1){
+if(
+    Array.isArray(window.destinationCandidates)
+    &&
+    window.destinationCandidates.length > 1
+){
 
     let best = null;
     let bestScore = Infinity;
