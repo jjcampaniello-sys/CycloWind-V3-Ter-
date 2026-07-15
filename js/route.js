@@ -149,7 +149,11 @@ function drawGrayRoute(latlngs){
 
 // Calcul trajet
 async function getRoute(){
-   alert("getRoute démarré");
+   alert(
+"GetRoute démarré\n" +
+"userPosition = " + JSON.stringify(window.userPosition) +
+"\ndestination = " + JSON.stringify(window.destination)
+);
     if(!window.userPosition){
    alert("Définissez votre position d'abord");
     return;
